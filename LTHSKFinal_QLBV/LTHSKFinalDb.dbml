@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LTHSKFinalDb" Class="LTHSKFinalDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RE9N901;Initial Catalog=LTHSKFinalDb;Integrated Security=True" SettingsObjectName="LTHSKFinal_QLBV.Properties.Settings" SettingsPropertyName="LTHSKFinalDbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Employees" Member="Employees">
+    <Type Name="Employee">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_SellReceipt" Member="SellReceipts" ThisKey="Id" OtherKey="EmployeeId" Type="SellReceipt" />
+      <Association Name="Employee_MedicineInvoice" Member="MedicineInvoices" ThisKey="Id" OtherKey="EmployeeId" Type="MedicineInvoice" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SellReceipts" Member="SellReceipts">
+    <Type Name="SellReceipt">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="EmployeeId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="SellReceipt_SellReceiptDetail" Member="SellReceiptDetails" ThisKey="Id" OtherKey="SellReceiptId" Type="SellReceiptDetail" />
+      <Association Name="Employee_SellReceipt" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+      <Association Name="Patient_SellReceipt" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MedicineDetails" Member="MedicineDetails">
+    <Type Name="MedicineDetail">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Column Name="AddedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ExpirationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MedicineId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MedicineSupplierId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MedicineInvoiceId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="MedicineInvoice_MedicineDetail" Member="MedicineInvoice" ThisKey="MedicineInvoiceId" OtherKey="Id" Type="MedicineInvoice" IsForeignKey="true" />
+      <Association Name="Medicine_MedicineDetail" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
+      <Association Name="MedicineSupplier_MedicineDetail" Member="MedicineSupplier" ThisKey="MedicineSupplierId" OtherKey="Id" Type="MedicineSupplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MedicineInvoices" Member="MedicineInvoices">
+    <Type Name="MedicineInvoice">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Association Name="MedicineInvoice_MedicineDetail" Member="MedicineDetails" ThisKey="Id" OtherKey="MedicineInvoiceId" Type="MedicineDetail" />
+      <Association Name="Employee_MedicineInvoice" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Medicines" Member="Medicines">
+    <Type Name="Medicine">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SellPrice" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Association Name="Medicine_MedicineDetail" Member="MedicineDetails" ThisKey="Id" OtherKey="MedicineId" Type="MedicineDetail" />
+      <Association Name="Medicine_PatientPrescriptionMedicine" Member="PatientPrescriptionMedicines" ThisKey="Id" OtherKey="MedicineId" Type="PatientPrescriptionMedicine" />
+      <Association Name="Medicine_SellReceiptDetail" Member="SellReceiptDetails" ThisKey="Id" OtherKey="MedicineId" Type="SellReceiptDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MedicineSuppliers" Member="MedicineSuppliers">
+    <Type Name="MedicineSupplier">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="MedicineSupplier_MedicineDetail" Member="MedicineDetails" ThisKey="Id" OtherKey="MedicineSupplierId" Type="MedicineDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientPrescriptionMedicines" Member="PatientPrescriptionMedicines">
+    <Type Name="PatientPrescriptionMedicine">
+      <Column Name="MedicineId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PatientPrescriptionId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="OneDayQuantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Medicine_PatientPrescriptionMedicine" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="PatientPrescription_PatientPrescriptionMedicine" Member="PatientPrescription" ThisKey="PatientPrescriptionId" OtherKey="Id" Type="PatientPrescription" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PatientPrescriptions" Member="PatientPrescriptions">
+    <Type Name="PatientPrescription">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DiseaseName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="PatientPrescription_PatientPrescriptionMedicine" Member="PatientPrescriptionMedicines" ThisKey="Id" OtherKey="PatientPrescriptionId" Type="PatientPrescriptionMedicine" />
+      <Association Name="Patient_PatientPrescription" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patients" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FullName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_SellReceipt" Member="SellReceipts" ThisKey="Id" OtherKey="PatientId" Type="SellReceipt" />
+      <Association Name="Patient_PatientPrescription" Member="PatientPrescriptions" ThisKey="Id" OtherKey="PatientId" Type="PatientPrescription" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SellReceiptDetails" Member="SellReceiptDetails">
+    <Type Name="SellReceiptDetail">
+      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SellReceiptId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="MedicineId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="Medicine_SellReceiptDetail" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
+      <Association Name="SellReceipt_SellReceiptDetail" Member="SellReceipt" ThisKey="SellReceiptId" OtherKey="Id" Type="SellReceipt" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
