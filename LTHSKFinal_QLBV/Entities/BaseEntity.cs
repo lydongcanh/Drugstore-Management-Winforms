@@ -9,6 +9,7 @@ namespace LTHSKFinal_QLBV
     public abstract class BaseEntity : IComparable<BaseEntity>
     {
         public abstract string EntityId { get; }
+        public abstract void Update(BaseEntity entity);
 
         public override bool Equals(object obj)
         {

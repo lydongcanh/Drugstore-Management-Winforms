@@ -9,5 +9,11 @@ namespace LTHSKFinal_QLBV
     public partial class MedicineInvoice : BaseEntity
     {
         public override string EntityId => Id;
+
+        public override void Update(BaseEntity entity)
+        {
+            var mi = entity as MedicineInvoice;
+            CreationDate = mi.CreationDate;
+        }
     }
 }

@@ -2,12 +2,13 @@
 using System.Data.Linq;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LTHSKFinal_QLBV.DAL
 {
-    public abstract class BaseDAO<T> where T: BaseEntity
+    public class BaseDAO<T> where T: BaseEntity
     {
         private readonly LTHSKFinalDbDataContext dbContext = new LTHSKFinalDbDataContext();
 
@@ -16,19 +17,24 @@ namespace LTHSKFinal_QLBV.DAL
             get { return dbContext.GetTable<T>(); }
         }
 
-        public List<T> GetAll()
+        public List<T> SelectAll()
         {
             return Table.ToList();
         }
 
-        public T GetById(string id)
+        public T SelectWithId(string id)
         {
             return Table.Where(e => e.EntityId == id).FirstOrDefault();
         }
 
+        public List<T> Select(Expression<Func<T, bool>> predicate)
+        {
+            return Table.Where(predicate).ToList();
+        }
+
         public void Add(T entity)
         {
-            if (Table.Where(e => e.Equals(entity)) != null)
+            if (Table.FirstOrDefault(e => e.Equals(entity)) != null)
                 throw new ArgumentException("Entity muốn thêm đã tồn tại.");
 
             Table.InsertOnSubmit(entity);
@@ -41,7 +47,7 @@ namespace LTHSKFinal_QLBV.DAL
             if (oldEntity == null)
                 throw new ArgumentException("Entity muốn cập nhật không tồn tại.");
 
-            oldEntity = entity;
+            oldEntity.Update(entity);
             dbContext.SubmitChanges();
         }
 
