@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LTHSKFinal_QLBV
+namespace LTHSKFinal_QLBV.Views
 {
-    public partial class Form1 : Form
+    public partial class B_AnalystForm : Form
     {
-        public Form1()
+        public B_AnalystForm()
         {
             InitializeComponent();
         }

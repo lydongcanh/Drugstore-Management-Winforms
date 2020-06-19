@@ -33,15 +33,12 @@ namespace LTHSKFinal_QLBV
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
-    partial void InsertSellReceipt(SellReceipt instance);
-    partial void UpdateSellReceipt(SellReceipt instance);
-    partial void DeleteSellReceipt(SellReceipt instance);
+    partial void InsertSellReceiptDetail(SellReceiptDetail instance);
+    partial void UpdateSellReceiptDetail(SellReceiptDetail instance);
+    partial void DeleteSellReceiptDetail(SellReceiptDetail instance);
     partial void InsertMedicineDetail(MedicineDetail instance);
     partial void UpdateMedicineDetail(MedicineDetail instance);
     partial void DeleteMedicineDetail(MedicineDetail instance);
-    partial void InsertMedicineInvoice(MedicineInvoice instance);
-    partial void UpdateMedicineInvoice(MedicineInvoice instance);
-    partial void DeleteMedicineInvoice(MedicineInvoice instance);
     partial void InsertMedicine(Medicine instance);
     partial void UpdateMedicine(Medicine instance);
     partial void DeleteMedicine(Medicine instance);
@@ -57,9 +54,9 @@ namespace LTHSKFinal_QLBV
     partial void InsertPatient(Patient instance);
     partial void UpdatePatient(Patient instance);
     partial void DeletePatient(Patient instance);
-    partial void InsertSellReceiptDetail(SellReceiptDetail instance);
-    partial void UpdateSellReceiptDetail(SellReceiptDetail instance);
-    partial void DeleteSellReceiptDetail(SellReceiptDetail instance);
+    partial void InsertSellReceipt(SellReceipt instance);
+    partial void UpdateSellReceipt(SellReceipt instance);
+    partial void DeleteSellReceipt(SellReceipt instance);
     #endregion
 		
 		public LTHSKFinalDbDataContext() : 
@@ -100,11 +97,11 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		public System.Data.Linq.Table<SellReceipt> SellReceipts
+		public System.Data.Linq.Table<SellReceiptDetail> SellReceiptDetails
 		{
 			get
 			{
-				return this.GetTable<SellReceipt>();
+				return this.GetTable<SellReceiptDetail>();
 			}
 		}
 		
@@ -113,14 +110,6 @@ namespace LTHSKFinal_QLBV
 			get
 			{
 				return this.GetTable<MedicineDetail>();
-			}
-		}
-		
-		public System.Data.Linq.Table<MedicineInvoice> MedicineInvoices
-		{
-			get
-			{
-				return this.GetTable<MedicineInvoice>();
 			}
 		}
 		
@@ -164,11 +153,11 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		public System.Data.Linq.Table<SellReceiptDetail> SellReceiptDetails
+		public System.Data.Linq.Table<SellReceipt> SellReceipts
 		{
 			get
 			{
-				return this.GetTable<SellReceiptDetail>();
+				return this.GetTable<SellReceipt>();
 			}
 		}
 	}
@@ -193,9 +182,9 @@ namespace LTHSKFinal_QLBV
 		
 		private string _Password;
 		
-		private EntitySet<SellReceipt> _SellReceipts;
+		private string _Type;
 		
-		private EntitySet<MedicineInvoice> _MedicineInvoices;
+		private EntitySet<SellReceipt> _SellReceipts;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -215,12 +204,13 @@ namespace LTHSKFinal_QLBV
     partial void OnUsernameChanged();
     partial void OnPasswordChanging(string value);
     partial void OnPasswordChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
     #endregion
 		
 		public Employee()
 		{
 			this._SellReceipts = new EntitySet<SellReceipt>(new Action<SellReceipt>(this.attach_SellReceipts), new Action<SellReceipt>(this.detach_SellReceipts));
-			this._MedicineInvoices = new EntitySet<MedicineInvoice>(new Action<MedicineInvoice>(this.attach_MedicineInvoices), new Action<MedicineInvoice>(this.detach_MedicineInvoices));
 			OnCreated();
 		}
 		
@@ -364,6 +354,26 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(15) NOT NULL", CanBeNull=false)]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_SellReceipt", Storage="_SellReceipts", ThisKey="Id", OtherKey="EmployeeId")]
 		public EntitySet<SellReceipt> SellReceipts
 		{
@@ -374,19 +384,6 @@ namespace LTHSKFinal_QLBV
 			set
 			{
 				this._SellReceipts.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_MedicineInvoice", Storage="_MedicineInvoices", ThisKey="Id", OtherKey="EmployeeId")]
-		public EntitySet<MedicineInvoice> MedicineInvoices
-		{
-			get
-			{
-				return this._MedicineInvoices;
-			}
-			set
-			{
-				this._MedicineInvoices.Assign(value);
 			}
 		}
 		
@@ -421,39 +418,25 @@ namespace LTHSKFinal_QLBV
 			this.SendPropertyChanging();
 			entity.Employee = null;
 		}
-		
-		private void attach_MedicineInvoices(MedicineInvoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = this;
-		}
-		
-		private void detach_MedicineInvoices(MedicineInvoice entity)
-		{
-			this.SendPropertyChanging();
-			entity.Employee = null;
-		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SellReceipts")]
-	public partial class SellReceipt : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SellReceiptDetails")]
+	public partial class SellReceiptDetail : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _Id;
 		
-		private System.DateTime _CreationDate;
+		private int _Quantity;
 		
-		private string _PatientId;
+		private string _SellReceiptId;
 		
-		private string _EmployeeId;
+		private string _MedicineId;
 		
-		private EntitySet<SellReceiptDetail> _SellReceiptDetails;
+		private EntityRef<Medicine> _Medicine;
 		
-		private EntityRef<Employee> _Employee;
-		
-		private EntityRef<Patient> _Patient;
+		private EntityRef<SellReceipt> _SellReceipt;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -461,19 +444,18 @@ namespace LTHSKFinal_QLBV
     partial void OnCreated();
     partial void OnIdChanging(string value);
     partial void OnIdChanged();
-    partial void OnCreationDateChanging(System.DateTime value);
-    partial void OnCreationDateChanged();
-    partial void OnPatientIdChanging(string value);
-    partial void OnPatientIdChanged();
-    partial void OnEmployeeIdChanging(string value);
-    partial void OnEmployeeIdChanged();
+    partial void OnQuantityChanging(int value);
+    partial void OnQuantityChanged();
+    partial void OnSellReceiptIdChanging(string value);
+    partial void OnSellReceiptIdChanged();
+    partial void OnMedicineIdChanging(string value);
+    partial void OnMedicineIdChanged();
     #endregion
 		
-		public SellReceipt()
+		public SellReceiptDetail()
 		{
-			this._SellReceiptDetails = new EntitySet<SellReceiptDetail>(new Action<SellReceiptDetail>(this.attach_SellReceiptDetails), new Action<SellReceiptDetail>(this.detach_SellReceiptDetails));
-			this._Employee = default(EntityRef<Employee>);
-			this._Patient = default(EntityRef<Patient>);
+			this._Medicine = default(EntityRef<Medicine>);
+			this._SellReceipt = default(EntityRef<SellReceipt>);
 			OnCreated();
 		}
 		
@@ -497,151 +479,138 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreationDate", DbType="DateTime NOT NULL")]
-		public System.DateTime CreationDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
+		public int Quantity
 		{
 			get
 			{
-				return this._CreationDate;
+				return this._Quantity;
 			}
 			set
 			{
-				if ((this._CreationDate != value))
+				if ((this._Quantity != value))
 				{
-					this.OnCreationDateChanging(value);
+					this.OnQuantityChanging(value);
 					this.SendPropertyChanging();
-					this._CreationDate = value;
-					this.SendPropertyChanged("CreationDate");
-					this.OnCreationDateChanged();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientId", DbType="NVarChar(128)")]
-		public string PatientId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellReceiptId", DbType="NVarChar(128)")]
+		public string SellReceiptId
 		{
 			get
 			{
-				return this._PatientId;
+				return this._SellReceiptId;
 			}
 			set
 			{
-				if ((this._PatientId != value))
+				if ((this._SellReceiptId != value))
 				{
-					if (this._Patient.HasLoadedOrAssignedValue)
+					if (this._SellReceipt.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnPatientIdChanging(value);
+					this.OnSellReceiptIdChanging(value);
 					this.SendPropertyChanging();
-					this._PatientId = value;
-					this.SendPropertyChanged("PatientId");
-					this.OnPatientIdChanged();
+					this._SellReceiptId = value;
+					this.SendPropertyChanged("SellReceiptId");
+					this.OnSellReceiptIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="NVarChar(128)")]
-		public string EmployeeId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineId", DbType="NVarChar(128)")]
+		public string MedicineId
 		{
 			get
 			{
-				return this._EmployeeId;
+				return this._MedicineId;
 			}
 			set
 			{
-				if ((this._EmployeeId != value))
+				if ((this._MedicineId != value))
 				{
-					if (this._Employee.HasLoadedOrAssignedValue)
+					if (this._Medicine.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnEmployeeIdChanging(value);
+					this.OnMedicineIdChanging(value);
 					this.SendPropertyChanging();
-					this._EmployeeId = value;
-					this.SendPropertyChanged("EmployeeId");
-					this.OnEmployeeIdChanged();
+					this._MedicineId = value;
+					this.SendPropertyChanged("MedicineId");
+					this.OnMedicineIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SellReceipt_SellReceiptDetail", Storage="_SellReceiptDetails", ThisKey="Id", OtherKey="SellReceiptId")]
-		public EntitySet<SellReceiptDetail> SellReceiptDetails
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicine_SellReceiptDetail", Storage="_Medicine", ThisKey="MedicineId", OtherKey="Id", IsForeignKey=true)]
+		public Medicine Medicine
 		{
 			get
 			{
-				return this._SellReceiptDetails;
+				return this._Medicine.Entity;
 			}
 			set
 			{
-				this._SellReceiptDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_SellReceipt", Storage="_Employee", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
+				Medicine previousValue = this._Medicine.Entity;
 				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+							|| (this._Medicine.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Employee.Entity = null;
-						previousValue.SellReceipts.Remove(this);
+						this._Medicine.Entity = null;
+						previousValue.SellReceiptDetails.Remove(this);
 					}
-					this._Employee.Entity = value;
+					this._Medicine.Entity = value;
 					if ((value != null))
 					{
-						value.SellReceipts.Add(this);
-						this._EmployeeId = value.Id;
+						value.SellReceiptDetails.Add(this);
+						this._MedicineId = value.Id;
 					}
 					else
 					{
-						this._EmployeeId = default(string);
+						this._MedicineId = default(string);
 					}
-					this.SendPropertyChanged("Employee");
+					this.SendPropertyChanged("Medicine");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_SellReceipt", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true)]
-		public Patient Patient
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SellReceipt_SellReceiptDetail", Storage="_SellReceipt", ThisKey="SellReceiptId", OtherKey="Id", IsForeignKey=true)]
+		public SellReceipt SellReceipt
 		{
 			get
 			{
-				return this._Patient.Entity;
+				return this._SellReceipt.Entity;
 			}
 			set
 			{
-				Patient previousValue = this._Patient.Entity;
+				SellReceipt previousValue = this._SellReceipt.Entity;
 				if (((previousValue != value) 
-							|| (this._Patient.HasLoadedOrAssignedValue == false)))
+							|| (this._SellReceipt.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Patient.Entity = null;
-						previousValue.SellReceipts.Remove(this);
+						this._SellReceipt.Entity = null;
+						previousValue.SellReceiptDetails.Remove(this);
 					}
-					this._Patient.Entity = value;
+					this._SellReceipt.Entity = value;
 					if ((value != null))
 					{
-						value.SellReceipts.Add(this);
-						this._PatientId = value.Id;
+						value.SellReceiptDetails.Add(this);
+						this._SellReceiptId = value.Id;
 					}
 					else
 					{
-						this._PatientId = default(string);
+						this._SellReceiptId = default(string);
 					}
-					this.SendPropertyChanged("Patient");
+					this.SendPropertyChanged("SellReceipt");
 				}
 			}
 		}
@@ -665,18 +634,6 @@ namespace LTHSKFinal_QLBV
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-		
-		private void attach_SellReceiptDetails(SellReceiptDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.SellReceipt = this;
-		}
-		
-		private void detach_SellReceiptDetails(SellReceiptDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.SellReceipt = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MedicineDetails")]
@@ -698,10 +655,6 @@ namespace LTHSKFinal_QLBV
 		private string _MedicineId;
 		
 		private string _MedicineSupplierId;
-		
-		private string _MedicineInvoiceId;
-		
-		private EntityRef<MedicineInvoice> _MedicineInvoice;
 		
 		private EntityRef<Medicine> _Medicine;
 		
@@ -725,13 +678,10 @@ namespace LTHSKFinal_QLBV
     partial void OnMedicineIdChanged();
     partial void OnMedicineSupplierIdChanging(string value);
     partial void OnMedicineSupplierIdChanged();
-    partial void OnMedicineInvoiceIdChanging(string value);
-    partial void OnMedicineInvoiceIdChanged();
     #endregion
 		
 		public MedicineDetail()
 		{
-			this._MedicineInvoice = default(EntityRef<MedicineInvoice>);
 			this._Medicine = default(EntityRef<Medicine>);
 			this._MedicineSupplier = default(EntityRef<MedicineSupplier>);
 			OnCreated();
@@ -885,64 +835,6 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineInvoiceId", DbType="NVarChar(128)")]
-		public string MedicineInvoiceId
-		{
-			get
-			{
-				return this._MedicineInvoiceId;
-			}
-			set
-			{
-				if ((this._MedicineInvoiceId != value))
-				{
-					if (this._MedicineInvoice.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMedicineInvoiceIdChanging(value);
-					this.SendPropertyChanging();
-					this._MedicineInvoiceId = value;
-					this.SendPropertyChanged("MedicineInvoiceId");
-					this.OnMedicineInvoiceIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MedicineInvoice_MedicineDetail", Storage="_MedicineInvoice", ThisKey="MedicineInvoiceId", OtherKey="Id", IsForeignKey=true)]
-		public MedicineInvoice MedicineInvoice
-		{
-			get
-			{
-				return this._MedicineInvoice.Entity;
-			}
-			set
-			{
-				MedicineInvoice previousValue = this._MedicineInvoice.Entity;
-				if (((previousValue != value) 
-							|| (this._MedicineInvoice.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MedicineInvoice.Entity = null;
-						previousValue.MedicineDetails.Remove(this);
-					}
-					this._MedicineInvoice.Entity = value;
-					if ((value != null))
-					{
-						value.MedicineDetails.Add(this);
-						this._MedicineInvoiceId = value.Id;
-					}
-					else
-					{
-						this._MedicineInvoiceId = default(string);
-					}
-					this.SendPropertyChanged("MedicineInvoice");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicine_MedicineDetail", Storage="_Medicine", ThisKey="MedicineId", OtherKey="Id", IsForeignKey=true)]
 		public Medicine Medicine
 		{
@@ -1032,185 +924,6 @@ namespace LTHSKFinal_QLBV
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MedicineInvoices")]
-	public partial class MedicineInvoice : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _Id;
-		
-		private System.DateTime _CreationDate;
-		
-		private string _EmployeeId;
-		
-		private EntitySet<MedicineDetail> _MedicineDetails;
-		
-		private EntityRef<Employee> _Employee;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(string value);
-    partial void OnIdChanged();
-    partial void OnCreationDateChanging(System.DateTime value);
-    partial void OnCreationDateChanged();
-    partial void OnEmployeeIdChanging(string value);
-    partial void OnEmployeeIdChanged();
-    #endregion
-		
-		public MedicineInvoice()
-		{
-			this._MedicineDetails = new EntitySet<MedicineDetail>(new Action<MedicineDetail>(this.attach_MedicineDetails), new Action<MedicineDetail>(this.detach_MedicineDetails));
-			this._Employee = default(EntityRef<Employee>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="NVarChar(128) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreationDate", DbType="DateTime NOT NULL")]
-		public System.DateTime CreationDate
-		{
-			get
-			{
-				return this._CreationDate;
-			}
-			set
-			{
-				if ((this._CreationDate != value))
-				{
-					this.OnCreationDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreationDate = value;
-					this.SendPropertyChanged("CreationDate");
-					this.OnCreationDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="NVarChar(128) NOT NULL", CanBeNull=false)]
-		public string EmployeeId
-		{
-			get
-			{
-				return this._EmployeeId;
-			}
-			set
-			{
-				if ((this._EmployeeId != value))
-				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnEmployeeIdChanging(value);
-					this.SendPropertyChanging();
-					this._EmployeeId = value;
-					this.SendPropertyChanged("EmployeeId");
-					this.OnEmployeeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MedicineInvoice_MedicineDetail", Storage="_MedicineDetails", ThisKey="Id", OtherKey="MedicineInvoiceId")]
-		public EntitySet<MedicineDetail> MedicineDetails
-		{
-			get
-			{
-				return this._MedicineDetails;
-			}
-			set
-			{
-				this._MedicineDetails.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_MedicineInvoice", Storage="_Employee", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
-		public Employee Employee
-		{
-			get
-			{
-				return this._Employee.Entity;
-			}
-			set
-			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.MedicineInvoices.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.MedicineInvoices.Add(this);
-						this._EmployeeId = value.Id;
-					}
-					else
-					{
-						this._EmployeeId = default(string);
-					}
-					this.SendPropertyChanged("Employee");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_MedicineDetails(MedicineDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.MedicineInvoice = this;
-		}
-		
-		private void detach_MedicineDetails(MedicineDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.MedicineInvoice = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Medicines")]
 	public partial class Medicine : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1223,11 +936,11 @@ namespace LTHSKFinal_QLBV
 		
 		private float _SellPrice;
 		
+		private EntitySet<SellReceiptDetail> _SellReceiptDetails;
+		
 		private EntitySet<MedicineDetail> _MedicineDetails;
 		
 		private EntitySet<PatientPrescriptionMedicine> _PatientPrescriptionMedicines;
-		
-		private EntitySet<SellReceiptDetail> _SellReceiptDetails;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1243,9 +956,9 @@ namespace LTHSKFinal_QLBV
 		
 		public Medicine()
 		{
+			this._SellReceiptDetails = new EntitySet<SellReceiptDetail>(new Action<SellReceiptDetail>(this.attach_SellReceiptDetails), new Action<SellReceiptDetail>(this.detach_SellReceiptDetails));
 			this._MedicineDetails = new EntitySet<MedicineDetail>(new Action<MedicineDetail>(this.attach_MedicineDetails), new Action<MedicineDetail>(this.detach_MedicineDetails));
 			this._PatientPrescriptionMedicines = new EntitySet<PatientPrescriptionMedicine>(new Action<PatientPrescriptionMedicine>(this.attach_PatientPrescriptionMedicines), new Action<PatientPrescriptionMedicine>(this.detach_PatientPrescriptionMedicines));
-			this._SellReceiptDetails = new EntitySet<SellReceiptDetail>(new Action<SellReceiptDetail>(this.attach_SellReceiptDetails), new Action<SellReceiptDetail>(this.detach_SellReceiptDetails));
 			OnCreated();
 		}
 		
@@ -1309,6 +1022,19 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicine_SellReceiptDetail", Storage="_SellReceiptDetails", ThisKey="Id", OtherKey="MedicineId")]
+		public EntitySet<SellReceiptDetail> SellReceiptDetails
+		{
+			get
+			{
+				return this._SellReceiptDetails;
+			}
+			set
+			{
+				this._SellReceiptDetails.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicine_MedicineDetail", Storage="_MedicineDetails", ThisKey="Id", OtherKey="MedicineId")]
 		public EntitySet<MedicineDetail> MedicineDetails
 		{
@@ -1335,19 +1061,6 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicine_SellReceiptDetail", Storage="_SellReceiptDetails", ThisKey="Id", OtherKey="MedicineId")]
-		public EntitySet<SellReceiptDetail> SellReceiptDetails
-		{
-			get
-			{
-				return this._SellReceiptDetails;
-			}
-			set
-			{
-				this._SellReceiptDetails.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1366,6 +1079,18 @@ namespace LTHSKFinal_QLBV
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_SellReceiptDetails(SellReceiptDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Medicine = this;
+		}
+		
+		private void detach_SellReceiptDetails(SellReceiptDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.Medicine = null;
 		}
 		
 		private void attach_MedicineDetails(MedicineDetail entity)
@@ -1387,18 +1112,6 @@ namespace LTHSKFinal_QLBV
 		}
 		
 		private void detach_PatientPrescriptionMedicines(PatientPrescriptionMedicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.Medicine = null;
-		}
-		
-		private void attach_SellReceiptDetails(SellReceiptDetail entity)
-		{
-			this.SendPropertyChanging();
-			entity.Medicine = this;
-		}
-		
-		private void detach_SellReceiptDetails(SellReceiptDetail entity)
 		{
 			this.SendPropertyChanging();
 			entity.Medicine = null;
@@ -1954,9 +1667,9 @@ namespace LTHSKFinal_QLBV
 		
 		private System.DateTime _BirthDate;
 		
-		private EntitySet<SellReceipt> _SellReceipts;
-		
 		private EntitySet<PatientPrescription> _PatientPrescriptions;
+		
+		private EntitySet<SellReceipt> _SellReceipts;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1976,8 +1689,8 @@ namespace LTHSKFinal_QLBV
 		
 		public Patient()
 		{
-			this._SellReceipts = new EntitySet<SellReceipt>(new Action<SellReceipt>(this.attach_SellReceipts), new Action<SellReceipt>(this.detach_SellReceipts));
 			this._PatientPrescriptions = new EntitySet<PatientPrescription>(new Action<PatientPrescription>(this.attach_PatientPrescriptions), new Action<PatientPrescription>(this.detach_PatientPrescriptions));
+			this._SellReceipts = new EntitySet<SellReceipt>(new Action<SellReceipt>(this.attach_SellReceipts), new Action<SellReceipt>(this.detach_SellReceipts));
 			OnCreated();
 		}
 		
@@ -2081,19 +1794,6 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_SellReceipt", Storage="_SellReceipts", ThisKey="Id", OtherKey="PatientId")]
-		public EntitySet<SellReceipt> SellReceipts
-		{
-			get
-			{
-				return this._SellReceipts;
-			}
-			set
-			{
-				this._SellReceipts.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_PatientPrescription", Storage="_PatientPrescriptions", ThisKey="Id", OtherKey="PatientId")]
 		public EntitySet<PatientPrescription> PatientPrescriptions
 		{
@@ -2104,6 +1804,19 @@ namespace LTHSKFinal_QLBV
 			set
 			{
 				this._PatientPrescriptions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_SellReceipt", Storage="_SellReceipts", ThisKey="Id", OtherKey="PatientId")]
+		public EntitySet<SellReceipt> SellReceipts
+		{
+			get
+			{
+				return this._SellReceipts;
+			}
+			set
+			{
+				this._SellReceipts.Assign(value);
 			}
 		}
 		
@@ -2127,18 +1840,6 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		private void attach_SellReceipts(SellReceipt entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = this;
-		}
-		
-		private void detach_SellReceipts(SellReceipt entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = null;
-		}
-		
 		private void attach_PatientPrescriptions(PatientPrescription entity)
 		{
 			this.SendPropertyChanging();
@@ -2150,25 +1851,39 @@ namespace LTHSKFinal_QLBV
 			this.SendPropertyChanging();
 			entity.Patient = null;
 		}
+		
+		private void attach_SellReceipts(SellReceipt entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = this;
+		}
+		
+		private void detach_SellReceipts(SellReceipt entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SellReceiptDetails")]
-	public partial class SellReceiptDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SellReceipts")]
+	public partial class SellReceipt : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _Id;
 		
-		private int _Quantity;
+		private System.DateTime _CreationDate;
 		
-		private string _SellReceiptId;
+		private string _PatientId;
 		
-		private string _MedicineId;
+		private string _EmployeeId;
 		
-		private EntityRef<Medicine> _Medicine;
+		private EntitySet<SellReceiptDetail> _SellReceiptDetails;
 		
-		private EntityRef<SellReceipt> _SellReceipt;
+		private EntityRef<Employee> _Employee;
+		
+		private EntityRef<Patient> _Patient;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2176,18 +1891,19 @@ namespace LTHSKFinal_QLBV
     partial void OnCreated();
     partial void OnIdChanging(string value);
     partial void OnIdChanged();
-    partial void OnQuantityChanging(int value);
-    partial void OnQuantityChanged();
-    partial void OnSellReceiptIdChanging(string value);
-    partial void OnSellReceiptIdChanged();
-    partial void OnMedicineIdChanging(string value);
-    partial void OnMedicineIdChanged();
+    partial void OnCreationDateChanging(System.DateTime value);
+    partial void OnCreationDateChanged();
+    partial void OnPatientIdChanging(string value);
+    partial void OnPatientIdChanged();
+    partial void OnEmployeeIdChanging(string value);
+    partial void OnEmployeeIdChanged();
     #endregion
 		
-		public SellReceiptDetail()
+		public SellReceipt()
 		{
-			this._Medicine = default(EntityRef<Medicine>);
-			this._SellReceipt = default(EntityRef<SellReceipt>);
+			this._SellReceiptDetails = new EntitySet<SellReceiptDetail>(new Action<SellReceiptDetail>(this.attach_SellReceiptDetails), new Action<SellReceiptDetail>(this.detach_SellReceiptDetails));
+			this._Employee = default(EntityRef<Employee>);
+			this._Patient = default(EntityRef<Patient>);
 			OnCreated();
 		}
 		
@@ -2211,138 +1927,151 @@ namespace LTHSKFinal_QLBV
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Int NOT NULL")]
-		public int Quantity
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreationDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreationDate
 		{
 			get
 			{
-				return this._Quantity;
+				return this._CreationDate;
 			}
 			set
 			{
-				if ((this._Quantity != value))
+				if ((this._CreationDate != value))
 				{
-					this.OnQuantityChanging(value);
+					this.OnCreationDateChanging(value);
 					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
+					this._CreationDate = value;
+					this.SendPropertyChanged("CreationDate");
+					this.OnCreationDateChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SellReceiptId", DbType="NVarChar(128)")]
-		public string SellReceiptId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientId", DbType="NVarChar(128)")]
+		public string PatientId
 		{
 			get
 			{
-				return this._SellReceiptId;
+				return this._PatientId;
 			}
 			set
 			{
-				if ((this._SellReceiptId != value))
+				if ((this._PatientId != value))
 				{
-					if (this._SellReceipt.HasLoadedOrAssignedValue)
+					if (this._Patient.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnSellReceiptIdChanging(value);
+					this.OnPatientIdChanging(value);
 					this.SendPropertyChanging();
-					this._SellReceiptId = value;
-					this.SendPropertyChanged("SellReceiptId");
-					this.OnSellReceiptIdChanged();
+					this._PatientId = value;
+					this.SendPropertyChanged("PatientId");
+					this.OnPatientIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MedicineId", DbType="NVarChar(128)")]
-		public string MedicineId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="NVarChar(128)")]
+		public string EmployeeId
 		{
 			get
 			{
-				return this._MedicineId;
+				return this._EmployeeId;
 			}
 			set
 			{
-				if ((this._MedicineId != value))
+				if ((this._EmployeeId != value))
 				{
-					if (this._Medicine.HasLoadedOrAssignedValue)
+					if (this._Employee.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnMedicineIdChanging(value);
+					this.OnEmployeeIdChanging(value);
 					this.SendPropertyChanging();
-					this._MedicineId = value;
-					this.SendPropertyChanged("MedicineId");
-					this.OnMedicineIdChanged();
+					this._EmployeeId = value;
+					this.SendPropertyChanged("EmployeeId");
+					this.OnEmployeeIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medicine_SellReceiptDetail", Storage="_Medicine", ThisKey="MedicineId", OtherKey="Id", IsForeignKey=true)]
-		public Medicine Medicine
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SellReceipt_SellReceiptDetail", Storage="_SellReceiptDetails", ThisKey="Id", OtherKey="SellReceiptId")]
+		public EntitySet<SellReceiptDetail> SellReceiptDetails
 		{
 			get
 			{
-				return this._Medicine.Entity;
+				return this._SellReceiptDetails;
 			}
 			set
 			{
-				Medicine previousValue = this._Medicine.Entity;
+				this._SellReceiptDetails.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_SellReceipt", Storage="_Employee", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
 				if (((previousValue != value) 
-							|| (this._Medicine.HasLoadedOrAssignedValue == false)))
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Medicine.Entity = null;
-						previousValue.SellReceiptDetails.Remove(this);
+						this._Employee.Entity = null;
+						previousValue.SellReceipts.Remove(this);
 					}
-					this._Medicine.Entity = value;
+					this._Employee.Entity = value;
 					if ((value != null))
 					{
-						value.SellReceiptDetails.Add(this);
-						this._MedicineId = value.Id;
+						value.SellReceipts.Add(this);
+						this._EmployeeId = value.Id;
 					}
 					else
 					{
-						this._MedicineId = default(string);
+						this._EmployeeId = default(string);
 					}
-					this.SendPropertyChanged("Medicine");
+					this.SendPropertyChanged("Employee");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SellReceipt_SellReceiptDetail", Storage="_SellReceipt", ThisKey="SellReceiptId", OtherKey="Id", IsForeignKey=true)]
-		public SellReceipt SellReceipt
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_SellReceipt", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true)]
+		public Patient Patient
 		{
 			get
 			{
-				return this._SellReceipt.Entity;
+				return this._Patient.Entity;
 			}
 			set
 			{
-				SellReceipt previousValue = this._SellReceipt.Entity;
+				Patient previousValue = this._Patient.Entity;
 				if (((previousValue != value) 
-							|| (this._SellReceipt.HasLoadedOrAssignedValue == false)))
+							|| (this._Patient.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._SellReceipt.Entity = null;
-						previousValue.SellReceiptDetails.Remove(this);
+						this._Patient.Entity = null;
+						previousValue.SellReceipts.Remove(this);
 					}
-					this._SellReceipt.Entity = value;
+					this._Patient.Entity = value;
 					if ((value != null))
 					{
-						value.SellReceiptDetails.Add(this);
-						this._SellReceiptId = value.Id;
+						value.SellReceipts.Add(this);
+						this._PatientId = value.Id;
 					}
 					else
 					{
-						this._SellReceiptId = default(string);
+						this._PatientId = default(string);
 					}
-					this.SendPropertyChanged("SellReceipt");
+					this.SendPropertyChanged("Patient");
 				}
 			}
 		}
@@ -2365,6 +2094,18 @@ namespace LTHSKFinal_QLBV
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_SellReceiptDetails(SellReceiptDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.SellReceipt = this;
+		}
+		
+		private void detach_SellReceiptDetails(SellReceiptDetail entity)
+		{
+			this.SendPropertyChanging();
+			entity.SellReceipt = null;
 		}
 	}
 }
