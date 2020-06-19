@@ -43,7 +43,8 @@
             this.colBirthdate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnPrescriptions = new System.Windows.Forms.Button();
             this.btnDirectSale = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnSaleReceipt = new System.Windows.Forms.Button();
+            this.btnAddPrescription = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.lTHSKFinalDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -61,15 +62,15 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(111, 15);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(689, 30);
+            this.txtSearch.Size = new System.Drawing.Size(567, 30);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(19, 595);
+            this.btnAdd.Location = new System.Drawing.Point(684, 12);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(139, 47);
+            this.btnAdd.Size = new System.Drawing.Size(116, 33);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -104,10 +105,11 @@
             this.lstPatients.MultiSelect = false;
             this.lstPatients.Name = "lstPatients";
             this.lstPatients.Size = new System.Drawing.Size(781, 535);
-            this.lstPatients.TabIndex = 3;
+            this.lstPatients.TabIndex = 0;
             this.lstPatients.UseCompatibleStateImageBehavior = false;
             this.lstPatients.View = System.Windows.Forms.View.Details;
             this.lstPatients.SelectedIndexChanged += new System.EventHandler(this.LstPatients_SelectedIndexChanged);
+            this.lstPatients.DoubleClick += new System.EventHandler(this.LstPatients_DoubleClick);
             // 
             // colIndex
             // 
@@ -136,9 +138,9 @@
             // 
             // btnPrescriptions
             // 
-            this.btnPrescriptions.Location = new System.Drawing.Point(341, 595);
+            this.btnPrescriptions.Location = new System.Drawing.Point(192, 595);
             this.btnPrescriptions.Name = "btnPrescriptions";
-            this.btnPrescriptions.Size = new System.Drawing.Size(205, 47);
+            this.btnPrescriptions.Size = new System.Drawing.Size(211, 47);
             this.btnPrescriptions.TabIndex = 4;
             this.btnPrescriptions.Text = "Danh sách đơn thuốc";
             this.btnPrescriptions.UseVisualStyleBackColor = true;
@@ -146,31 +148,41 @@
             // 
             // btnDirectSale
             // 
-            this.btnDirectSale.Location = new System.Drawing.Point(568, 595);
+            this.btnDirectSale.Location = new System.Drawing.Point(606, 595);
             this.btnDirectSale.Name = "btnDirectSale";
-            this.btnDirectSale.Size = new System.Drawing.Size(231, 47);
-            this.btnDirectSale.TabIndex = 5;
+            this.btnDirectSale.Size = new System.Drawing.Size(193, 47);
+            this.btnDirectSale.TabIndex = 6;
             this.btnDirectSale.Text = "Bán không kê đơn";
             this.btnDirectSale.UseVisualStyleBackColor = true;
             this.btnDirectSale.Click += new System.EventHandler(this.BtnDirectSale_Click);
             // 
-            // btnEdit
+            // btnSaleReceipt
             // 
-            this.btnEdit.Location = new System.Drawing.Point(180, 594);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(139, 47);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Sửa";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
+            this.btnSaleReceipt.Location = new System.Drawing.Point(409, 595);
+            this.btnSaleReceipt.Name = "btnSaleReceipt";
+            this.btnSaleReceipt.Size = new System.Drawing.Size(191, 47);
+            this.btnSaleReceipt.TabIndex = 5;
+            this.btnSaleReceipt.Text = "Danh sách hóa đơn";
+            this.btnSaleReceipt.UseVisualStyleBackColor = true;
             // 
-            // SaleForm
+            // btnAddPrescription
+            // 
+            this.btnAddPrescription.Location = new System.Drawing.Point(19, 594);
+            this.btnAddPrescription.Name = "btnAddPrescription";
+            this.btnAddPrescription.Size = new System.Drawing.Size(167, 47);
+            this.btnAddPrescription.TabIndex = 3;
+            this.btnAddPrescription.Text = "Thêm đơn thuốc";
+            this.btnAddPrescription.UseVisualStyleBackColor = true;
+            this.btnAddPrescription.Click += new System.EventHandler(this.BtnAddPrescription_Click);
+            // 
+            // B_SaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(812, 653);
-            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAddPrescription);
+            this.Controls.Add(this.btnSaleReceipt);
             this.Controls.Add(this.btnDirectSale);
             this.Controls.Add(this.btnPrescriptions);
             this.Controls.Add(this.lstPatients);
@@ -180,7 +192,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "SaleForm";
+            this.Name = "B_SaleForm";
             this.Text = "SaleForm";
             this.Load += new System.EventHandler(this.SaleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lTHSKFinalDbDataSet)).EndInit();
@@ -206,6 +218,7 @@
         private System.Windows.Forms.ColumnHeader colBirthdate;
         private System.Windows.Forms.Button btnPrescriptions;
         private System.Windows.Forms.Button btnDirectSale;
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnSaleReceipt;
+        private System.Windows.Forms.Button btnAddPrescription;
     }
 }

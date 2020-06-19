@@ -14,11 +14,14 @@ namespace LTHSKFinal_QLBV.Views
     public partial class B_SaleForm : Form
     {
         private readonly BaseDAO<Patient> PatientDAO = new BaseDAO<Patient>();
+        private readonly Employee Employee;
         private List<Patient> patients = new List<Patient>();
 
-        public B_SaleForm()
+        public B_SaleForm(Employee employee)
         {
             InitializeComponent();
+
+            Employee = employee;
         }
 
         private void LoadPatients()
@@ -42,21 +45,23 @@ namespace LTHSKFinal_QLBV.Views
         private void SaleForm_Load(object sender, EventArgs e)
         {
             LoadPatients();
-            btnEdit.Enabled = false;
+            btnAddPrescription.Enabled = false;
             btnPrescriptions.Enabled = false;
+            btnSaleReceipt.Enabled = false;
         }
 
         private void LstPatients_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstPatients.SelectedIndices.Count < 1)
             {
-                btnEdit.Enabled = false;
                 btnPrescriptions.Enabled = false;
+                btnSaleReceipt.Enabled = false;
                 return;
             }
 
-            btnEdit.Enabled = true;
+            btnAddPrescription.Enabled = true;
             btnPrescriptions.Enabled = true;
+            btnSaleReceipt.Enabled = true;            
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -75,7 +80,24 @@ namespace LTHSKFinal_QLBV.Views
             patientForm.ShowDialog(this);
         }
 
-        private void BtnEdit_Click(object sender, EventArgs e)
+        private void BtnAddPrescription_Click(object sender, EventArgs e)
+        {
+            var patient = patients[lstPatients.SelectedIndices[0]];
+            var form = new D_PrescriptionForm(Employee, patient);
+            form.ShowDialog(this);
+        }
+
+        private void BtnPrescriptions_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDirectSale_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LstPatients_DoubleClick(object sender, EventArgs e)
         {
             if (lstPatients.SelectedIndices.Count < 1)
                 return;
@@ -88,16 +110,6 @@ namespace LTHSKFinal_QLBV.Views
                 LoadPatients();
             }, patient);
             patientForm.ShowDialog(this);
-        }
-
-        private void BtnPrescriptions_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnDirectSale_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

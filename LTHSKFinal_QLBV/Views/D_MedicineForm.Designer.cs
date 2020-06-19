@@ -40,7 +40,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 18);
+            this.label1.Location = new System.Drawing.Point(14, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 25);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 62);
+            this.label2.Location = new System.Drawing.Point(14, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 25);
             this.label2.TabIndex = 1;
@@ -58,7 +58,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 106);
+            this.label3.Location = new System.Drawing.Point(14, 90);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 25);
             this.label3.TabIndex = 2;
@@ -74,21 +74,21 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(100, 59);
+            this.txtName.Location = new System.Drawing.Point(100, 51);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(370, 30);
             this.txtName.TabIndex = 4;
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(100, 103);
+            this.txtPrice.Location = new System.Drawing.Point(100, 87);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(370, 30);
             this.txtPrice.TabIndex = 5;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(100, 147);
+            this.btnOK.Location = new System.Drawing.Point(100, 123);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(370, 35);
             this.btnOK.TabIndex = 6;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 192);
+            this.ClientSize = new System.Drawing.Size(482, 163);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtName);

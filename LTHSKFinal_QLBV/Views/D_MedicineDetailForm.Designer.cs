@@ -45,16 +45,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 9);
+            this.label2.Location = new System.Drawing.Point(17, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(90, 25);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Số lượng";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 87);
+            this.label3.Location = new System.Drawing.Point(17, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 25);
             this.label3.TabIndex = 2;
@@ -72,7 +72,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 163);
+            this.label5.Location = new System.Drawing.Point(17, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(133, 25);
             this.label5.TabIndex = 4;
@@ -83,7 +83,7 @@
             this.btnOk.Location = new System.Drawing.Point(151, 202);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(425, 38);
-            this.btnOk.TabIndex = 9;
+            this.btnOk.TabIndex = 10;
             this.btnOk.Text = "Xác nhận";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.BtnOK_Click);
@@ -93,21 +93,21 @@
             this.numQuantity.Location = new System.Drawing.Point(151, 7);
             this.numQuantity.Name = "numQuantity";
             this.numQuantity.Size = new System.Drawing.Size(427, 30);
-            this.numQuantity.TabIndex = 10;
+            this.numQuantity.TabIndex = 5;
             // 
             // dtpAddedDate
             // 
             this.dtpAddedDate.Location = new System.Drawing.Point(151, 82);
             this.dtpAddedDate.Name = "dtpAddedDate";
             this.dtpAddedDate.Size = new System.Drawing.Size(427, 30);
-            this.dtpAddedDate.TabIndex = 11;
+            this.dtpAddedDate.TabIndex = 7;
             // 
             // dtpExpiredDate
             // 
             this.dtpExpiredDate.Location = new System.Drawing.Point(151, 121);
             this.dtpExpiredDate.Name = "dtpExpiredDate";
             this.dtpExpiredDate.Size = new System.Drawing.Size(427, 30);
-            this.dtpExpiredDate.TabIndex = 12;
+            this.dtpExpiredDate.TabIndex = 8;
             // 
             // cbSupplier
             // 
@@ -115,15 +115,15 @@
             this.cbSupplier.Location = new System.Drawing.Point(151, 160);
             this.cbSupplier.Name = "cbSupplier";
             this.cbSupplier.Size = new System.Drawing.Size(427, 33);
-            this.cbSupplier.TabIndex = 13;
+            this.cbSupplier.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 49);
+            this.label1.Location = new System.Drawing.Point(17, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 25);
-            this.label1.TabIndex = 14;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Giá nhập";
             // 
             // txtPrice
@@ -131,7 +131,7 @@
             this.txtPrice.Location = new System.Drawing.Point(151, 46);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(427, 30);
-            this.txtPrice.TabIndex = 15;
+            this.txtPrice.TabIndex = 6;
             // 
             // D_MedicineDetailForm
             // 

@@ -45,9 +45,10 @@ namespace LTHSKFinal_QLBV.Views
                 employee = e;
                 btnSale.Enabled = true;
                 btnMedicine.Enabled = true;
+                btnEmployee.Enabled = true;
                 btnAnalyst.Enabled = true;
                 btnLogout.Enabled = true;
-                OpenChildForm(new B_SaleForm());
+                OpenChildForm(new B_SaleForm(employee));
             }));
         }
 
@@ -56,18 +57,24 @@ namespace LTHSKFinal_QLBV.Views
             OpenLoginForm();
             btnSale.Enabled = false;
             btnMedicine.Enabled = false;
+            btnEmployee.Enabled = false;
             btnAnalyst.Enabled = false;
             btnLogout.Enabled = false;
         }
 
         private void BtnSale_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new B_SaleForm());
+            OpenChildForm(new B_SaleForm(employee));
         }
 
         private void BtnMedicine_Click(object sender, EventArgs e)
         {
             OpenChildForm(new B_MedicineForm());
+        }
+
+        private void BtnEmployee_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new B_EmployeeForm());
         }
 
         private void BtnAnalyst_Click(object sender, EventArgs e)

@@ -44,7 +44,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 30);
+            this.label1.Location = new System.Drawing.Point(12, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(28, 25);
             this.label1.TabIndex = 0;
@@ -53,7 +53,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 88);
+            this.label2.Location = new System.Drawing.Point(12, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 25);
             this.label2.TabIndex = 1;
@@ -62,7 +62,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(66, 146);
+            this.label3.Location = new System.Drawing.Point(12, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 25);
             this.label3.TabIndex = 2;
@@ -71,7 +71,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 204);
+            this.label4.Location = new System.Drawing.Point(12, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 25);
             this.label4.TabIndex = 3;
@@ -80,7 +80,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 267);
+            this.label5.Location = new System.Drawing.Point(12, 179);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 25);
             this.label5.TabIndex = 4;
@@ -96,21 +96,21 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(114, 85);
+            this.txtName.Location = new System.Drawing.Point(114, 63);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(356, 30);
             this.txtName.TabIndex = 6;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(114, 143);
+            this.txtPhone.Location = new System.Drawing.Point(114, 99);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(356, 30);
             this.txtPhone.TabIndex = 7;
             // 
             // dtpBirthdate
             // 
-            this.dtpBirthdate.Location = new System.Drawing.Point(114, 262);
+            this.dtpBirthdate.Location = new System.Drawing.Point(114, 174);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(356, 30);
             this.dtpBirthdate.TabIndex = 9;
@@ -122,14 +122,14 @@
             "Nam",
             "Nữ",
             "Khác"});
-            this.cbGender.Location = new System.Drawing.Point(114, 201);
+            this.cbGender.Location = new System.Drawing.Point(114, 135);
             this.cbGender.Name = "cbGender";
             this.cbGender.Size = new System.Drawing.Size(356, 33);
             this.cbGender.TabIndex = 10;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(114, 318);
+            this.btnOK.Location = new System.Drawing.Point(114, 210);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(356, 33);
             this.btnOK.TabIndex = 11;
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(482, 365);
+            this.ClientSize = new System.Drawing.Size(482, 249);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbGender);
             this.Controls.Add(this.dtpBirthdate);
