@@ -113,6 +113,12 @@
     <Compile Include="Views\C_MedicineSupplierForm.Designer.cs">
       <DependentUpon>C_MedicineSupplierForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\D_DirectSaleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\D_DirectSaleForm.Designer.cs">
+      <DependentUpon>D_DirectSaleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\D_EmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,18 @@
     <Compile Include="Views\D_PrescriptionForm.Designer.cs">
       <DependentUpon>D_PrescriptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\D_SaleWithPrescriptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\D_SaleWithPrescriptionForm.Designer.cs">
+      <DependentUpon>D_SaleWithPrescriptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\D_SellRecriptForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\D_SellRecriptForm.Designer.cs">
+      <DependentUpon>D_SellRecriptForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -185,6 +203,9 @@
     <EmbeddedResource Include="Views\C_MedicineSupplierForm.resx">
       <DependentUpon>C_MedicineSupplierForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\D_DirectSaleForm.resx">
+      <DependentUpon>D_DirectSaleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\D_EmployeeForm.resx">
       <DependentUpon>D_EmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -205,6 +226,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\D_PrescriptionForm.resx">
       <DependentUpon>D_PrescriptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\D_SaleWithPrescriptionForm.resx">
+      <DependentUpon>D_SaleWithPrescriptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\D_SellRecriptForm.resx">
+      <DependentUpon>D_SellRecriptForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="LTHSKFinalDb.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

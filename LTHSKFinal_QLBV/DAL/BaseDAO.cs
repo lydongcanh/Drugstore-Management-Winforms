@@ -24,7 +24,7 @@ namespace LTHSKFinal_QLBV.DAL
 
         public T SelectWithId(string id)
         {
-            return Table.Where(e => e.EntityId == id).FirstOrDefault();
+            return Table.Where(e => e.EntityId.Equals(id)).FirstOrDefault();
         }
 
         public List<T> Select(Expression<Func<T, bool>> predicate)

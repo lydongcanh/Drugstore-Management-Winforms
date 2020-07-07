@@ -41,36 +41,41 @@
             this.colPhone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colGender = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colBirthdate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnPrescriptions = new System.Windows.Forms.Button();
-            this.btnDirectSale = new System.Windows.Forms.Button();
             this.btnSaleReceipt = new System.Windows.Forms.Button();
+            this.btnDirectSale = new System.Windows.Forms.Button();
+            this.btnSaleWithPrescription = new System.Windows.Forms.Button();
             this.btnAddPrescription = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lstPrescription = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.lTHSKFinalDbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientsBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 20);
+            this.label1.Location = new System.Drawing.Point(6, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 25);
+            this.label1.Size = new System.Drawing.Size(120, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tìm kiếm";
+            this.label1.Text = "Tìm theo tên";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(111, 15);
+            this.txtSearch.Location = new System.Drawing.Point(114, 33);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(567, 30);
+            this.txtSearch.Size = new System.Drawing.Size(405, 30);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(684, 12);
+            this.btnAdd.Location = new System.Drawing.Point(525, 28);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(116, 33);
+            this.btnAdd.Size = new System.Drawing.Size(76, 33);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -101,10 +106,10 @@
             this.lstPatients.FullRowSelect = true;
             this.lstPatients.GridLines = true;
             this.lstPatients.HideSelection = false;
-            this.lstPatients.Location = new System.Drawing.Point(19, 54);
+            this.lstPatients.Location = new System.Drawing.Point(19, 85);
             this.lstPatients.MultiSelect = false;
             this.lstPatients.Name = "lstPatients";
-            this.lstPatients.Size = new System.Drawing.Size(781, 535);
+            this.lstPatients.Size = new System.Drawing.Size(595, 498);
             this.lstPatients.TabIndex = 0;
             this.lstPatients.UseCompatibleStateImageBehavior = false;
             this.lstPatients.View = System.Windows.Forms.View.Details;
@@ -114,37 +119,37 @@
             // colIndex
             // 
             this.colIndex.Text = "Id";
-            this.colIndex.Width = 90;
+            this.colIndex.Width = 70;
             // 
             // colName
             // 
             this.colName.Text = "Tên";
-            this.colName.Width = 250;
+            this.colName.Width = 155;
             // 
             // colPhone
             // 
             this.colPhone.Text = "Số điện thoại";
-            this.colPhone.Width = 200;
+            this.colPhone.Width = 150;
             // 
             // colGender
             // 
             this.colGender.Text = "Giới tính";
-            this.colGender.Width = 120;
+            this.colGender.Width = 100;
             // 
             // colBirthdate
             // 
             this.colBirthdate.Text = "Ngày sinh";
             this.colBirthdate.Width = 116;
             // 
-            // btnPrescriptions
+            // btnSaleReceipt
             // 
-            this.btnPrescriptions.Location = new System.Drawing.Point(192, 595);
-            this.btnPrescriptions.Name = "btnPrescriptions";
-            this.btnPrescriptions.Size = new System.Drawing.Size(211, 47);
-            this.btnPrescriptions.TabIndex = 4;
-            this.btnPrescriptions.Text = "Danh sách đơn thuốc";
-            this.btnPrescriptions.UseVisualStyleBackColor = true;
-            this.btnPrescriptions.Click += new System.EventHandler(this.BtnPrescriptions_Click);
+            this.btnSaleReceipt.Location = new System.Drawing.Point(192, 595);
+            this.btnSaleReceipt.Name = "btnSaleReceipt";
+            this.btnSaleReceipt.Size = new System.Drawing.Size(211, 47);
+            this.btnSaleReceipt.TabIndex = 4;
+            this.btnSaleReceipt.Text = "Danh sách hóa đơn";
+            this.btnSaleReceipt.UseVisualStyleBackColor = true;
+            this.btnSaleReceipt.Click += new System.EventHandler(this.BtnSaleReceipt_Click);
             // 
             // btnDirectSale
             // 
@@ -156,14 +161,15 @@
             this.btnDirectSale.UseVisualStyleBackColor = true;
             this.btnDirectSale.Click += new System.EventHandler(this.BtnDirectSale_Click);
             // 
-            // btnSaleReceipt
+            // btnSaleWithPrescription
             // 
-            this.btnSaleReceipt.Location = new System.Drawing.Point(409, 595);
-            this.btnSaleReceipt.Name = "btnSaleReceipt";
-            this.btnSaleReceipt.Size = new System.Drawing.Size(191, 47);
-            this.btnSaleReceipt.TabIndex = 5;
-            this.btnSaleReceipt.Text = "Danh sách hóa đơn";
-            this.btnSaleReceipt.UseVisualStyleBackColor = true;
+            this.btnSaleWithPrescription.Location = new System.Drawing.Point(409, 595);
+            this.btnSaleWithPrescription.Name = "btnSaleWithPrescription";
+            this.btnSaleWithPrescription.Size = new System.Drawing.Size(191, 47);
+            this.btnSaleWithPrescription.TabIndex = 5;
+            this.btnSaleWithPrescription.Text = "Bán theo đơn thuốc";
+            this.btnSaleWithPrescription.UseVisualStyleBackColor = true;
+            this.btnSaleWithPrescription.Click += new System.EventHandler(this.BtnSaleWithPrescription_Click);
             // 
             // btnAddPrescription
             // 
@@ -175,20 +181,52 @@
             this.btnAddPrescription.UseVisualStyleBackColor = true;
             this.btnAddPrescription.Click += new System.EventHandler(this.BtnAddPrescription_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Location = new System.Drawing.Point(13, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(607, 577);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Bệnh nhân";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lstPrescription);
+            this.groupBox2.Location = new System.Drawing.Point(627, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(173, 570);
+            this.groupBox2.TabIndex = 8;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Đơn thuốc";
+            // 
+            // lstPrescription
+            // 
+            this.lstPrescription.FormattingEnabled = true;
+            this.lstPrescription.ItemHeight = 25;
+            this.lstPrescription.Location = new System.Drawing.Point(7, 30);
+            this.lstPrescription.Name = "lstPrescription";
+            this.lstPrescription.Size = new System.Drawing.Size(160, 529);
+            this.lstPrescription.TabIndex = 0;
+            this.lstPrescription.SelectedIndexChanged += new System.EventHandler(this.LstPrescription_SelectedIndexChanged);
+            this.lstPrescription.DoubleClick += new System.EventHandler(this.LstPrescription_DoubleClick);
+            // 
             // B_SaleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(812, 653);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAddPrescription);
-            this.Controls.Add(this.btnSaleReceipt);
+            this.Controls.Add(this.btnSaleWithPrescription);
             this.Controls.Add(this.btnDirectSale);
-            this.Controls.Add(this.btnPrescriptions);
+            this.Controls.Add(this.btnSaleReceipt);
             this.Controls.Add(this.lstPatients);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5);
@@ -197,8 +235,10 @@
             this.Load += new System.EventHandler(this.SaleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lTHSKFinalDbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.patientsBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -216,9 +256,12 @@
         private System.Windows.Forms.ColumnHeader colPhone;
         private System.Windows.Forms.ColumnHeader colGender;
         private System.Windows.Forms.ColumnHeader colBirthdate;
-        private System.Windows.Forms.Button btnPrescriptions;
-        private System.Windows.Forms.Button btnDirectSale;
         private System.Windows.Forms.Button btnSaleReceipt;
+        private System.Windows.Forms.Button btnDirectSale;
+        private System.Windows.Forms.Button btnSaleWithPrescription;
         private System.Windows.Forms.Button btnAddPrescription;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListBox lstPrescription;
     }
 }

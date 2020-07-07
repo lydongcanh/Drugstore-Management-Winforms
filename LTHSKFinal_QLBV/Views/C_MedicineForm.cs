@@ -93,6 +93,12 @@ namespace LTHSKFinal_QLBV.Views
         private void C_MedicineForm_Load(object sender, EventArgs e)
         {
             LoadMedicines();
+
+            AutoCompleteStringCollection allowedTypes = new AutoCompleteStringCollection();
+            allowedTypes.AddRange(MedicineDAO.Table.Select(m => m.Name).ToArray());
+            txtSearch.AutoCompleteCustomSource = allowedTypes;
+            txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void BtnAddMed_Click(object sender, EventArgs e)

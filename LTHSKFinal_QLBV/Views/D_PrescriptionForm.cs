@@ -18,17 +18,32 @@ namespace LTHSKFinal_QLBV.Views
         private readonly BaseDAO<PatientPrescriptionMedicine> PrescriptionDetailDAO = new BaseDAO<PatientPrescriptionMedicine>();
         private readonly Employee Employee = null;
         private readonly Patient Patient = null;
+        private readonly Action<PatientPrescription> OnOK = null;
 
         private List<PatientPrescriptionMedicine> details = new List<PatientPrescriptionMedicine>();
 
-        public D_PrescriptionForm(Employee employee, Patient patient)
+        public D_PrescriptionForm(Employee employee, Patient patient, Action<PatientPrescription> onOK,
+            PatientPrescription prescription = null)
         {
             InitializeComponent();
 
             Employee = employee;
             Patient = patient;
+            OnOK = onOK;
 
-            txtPrescriptionId.Text = "DT" + (PrescriptionDAO.Count() + 1);
+            if (prescription == null)
+            {
+                txtPrescriptionId.Text = "DT" + (PrescriptionDAO.Count() + 1);
+            }
+            else
+            {
+                txtPrescriptionId.Text = prescription.EntityId;
+                txtPrescriptionId.Enabled = false;
+                detailGroup.Visible = false;
+                txtDiesease.Text = prescription.DiseaseName;
+                details = PrescriptionDetailDAO.Select(pd => pd.PatientPrescriptionId == prescription.EntityId);
+                LoadDetails();
+            }
         }
 
         private void LoadMedicines()
@@ -55,6 +70,17 @@ namespace LTHSKFinal_QLBV.Views
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             var medicine = MedicineDAO.Select(m => m.Name == cbMedicine.SelectedItem.ToString())[0];
+
+            foreach (var detail in details)
+            {
+                if (detail.MedicineId == medicine.Id)
+                {
+                    detail.OneDayQuantity += (int)numQuantity.Value;
+                    LoadDetails();
+                    return;
+                }
+            }
+
             details.Add(new PatientPrescriptionMedicine()
             {
                 MedicineId = medicine.EntityId,
@@ -80,20 +106,29 @@ namespace LTHSKFinal_QLBV.Views
         private void D_PrescriptionForm_Load(object sender, EventArgs e)
         {
             LoadMedicines();
+            numQuantity.Minimum = 1;
         }
 
         private void BtnOk_Click(object sender, EventArgs e)
         {
-            PrescriptionDAO.Add(new PatientPrescription()
+            var prescription = new PatientPrescription()
             {
                 Id = txtPrescriptionId.Text,
                 DiseaseName = txtDiesease.Text,
                 PatientId = Patient.EntityId
-            });
+            };
 
-            foreach (var detail in details)
-                PrescriptionDetailDAO.Add(detail);
-
+            if (prescription == null)
+            {
+                PrescriptionDAO.Add(prescription);
+                foreach (var detail in details)
+                    PrescriptionDetailDAO.Add(detail);
+            }
+            else
+            {
+                PrescriptionDAO.Update(prescription);
+            }
+            OnOK(prescription);
             Close();
         }
     }

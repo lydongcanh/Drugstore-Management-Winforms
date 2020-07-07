@@ -13,14 +13,16 @@
       <Association Name="Employee_SellReceipt" Member="SellReceipts" ThisKey="Id" OtherKey="EmployeeId" Type="SellReceipt" />
     </Type>
   </Table>
-  <Table Name="dbo.SellReceiptDetails" Member="SellReceiptDetails">
-    <Type Name="SellReceiptDetail">
+  <Table Name="dbo.SellReceipts" Member="SellReceipts">
+    <Type Name="SellReceipt">
       <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SellReceiptId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="MedicineId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Association Name="Medicine_SellReceiptDetail" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
-      <Association Name="SellReceipt_SellReceiptDetail" Member="SellReceipt" ThisKey="SellReceiptId" OtherKey="Id" Type="SellReceipt" IsForeignKey="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="EmployeeId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Association Name="SellReceipt_SellReceiptDetail" Member="SellReceiptDetails" ThisKey="Id" OtherKey="SellReceiptId" Type="SellReceiptDetail" />
+      <Association Name="Employee_SellReceipt" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+      <Association Name="Patient_SellReceipt" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MedicineDetails" Member="MedicineDetails">
@@ -41,9 +43,9 @@
       <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SellPrice" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
-      <Association Name="Medicine_SellReceiptDetail" Member="SellReceiptDetails" ThisKey="Id" OtherKey="MedicineId" Type="SellReceiptDetail" />
       <Association Name="Medicine_MedicineDetail" Member="MedicineDetails" ThisKey="Id" OtherKey="MedicineId" Type="MedicineDetail" />
       <Association Name="Medicine_PatientPrescriptionMedicine" Member="PatientPrescriptionMedicines" ThisKey="Id" OtherKey="MedicineId" Type="PatientPrescriptionMedicine" />
+      <Association Name="Medicine_SellReceiptDetail" Member="SellReceiptDetails" ThisKey="Id" OtherKey="MedicineId" Type="SellReceiptDetail" />
     </Type>
   </Table>
   <Table Name="dbo.MedicineSuppliers" Member="MedicineSuppliers">
@@ -80,19 +82,17 @@
       <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Gender" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Association Name="Patient_PatientPrescription" Member="PatientPrescriptions" ThisKey="Id" OtherKey="PatientId" Type="PatientPrescription" />
       <Association Name="Patient_SellReceipt" Member="SellReceipts" ThisKey="Id" OtherKey="PatientId" Type="SellReceipt" />
+      <Association Name="Patient_PatientPrescription" Member="PatientPrescriptions" ThisKey="Id" OtherKey="PatientId" Type="PatientPrescription" />
     </Type>
   </Table>
-  <Table Name="dbo.SellReceipts" Member="SellReceipts">
-    <Type Name="SellReceipt">
-      <Column Name="Id" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="PatientId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Column Name="EmployeeId" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
-      <Association Name="SellReceipt_SellReceiptDetail" Member="SellReceiptDetails" ThisKey="Id" OtherKey="SellReceiptId" Type="SellReceiptDetail" />
-      <Association Name="Employee_SellReceipt" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
-      <Association Name="Patient_SellReceipt" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+  <Table Name="dbo.SellReceiptDetails" Member="SellReceiptDetails">
+    <Type Name="SellReceiptDetail">
+      <Column Name="SellReceiptId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MedicineId" Type="System.String" DbType="NVarChar(128) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Medicine_SellReceiptDetail" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
+      <Association Name="SellReceipt_SellReceiptDetail" Member="SellReceipt" ThisKey="SellReceiptId" OtherKey="Id" Type="SellReceipt" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

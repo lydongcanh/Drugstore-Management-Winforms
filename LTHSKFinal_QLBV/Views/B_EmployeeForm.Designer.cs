@@ -43,17 +43,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 25);
+            this.label1.Size = new System.Drawing.Size(120, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Tìm";
+            this.label1.Text = "Tìm theo tên";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(84, 13);
+            this.txtSearch.Location = new System.Drawing.Point(138, 13);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(538, 30);
+            this.txtSearch.Size = new System.Drawing.Size(484, 30);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 

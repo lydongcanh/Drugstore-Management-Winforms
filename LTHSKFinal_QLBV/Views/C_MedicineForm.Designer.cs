@@ -39,11 +39,11 @@
             this.colUnitPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAddedDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colExpriredDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSupplier = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnAddMed = new System.Windows.Forms.Button();
             this.btnAddInvoice = new System.Windows.Forms.Button();
-            this.colSupplier = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -141,20 +141,25 @@
             this.colExpriredDate.Text = "Ngày hết hạn";
             this.colExpriredDate.Width = 150;
             // 
+            // colSupplier
+            // 
+            this.colSupplier.Text = "Nhà cung cấp";
+            this.colSupplier.Width = 100;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(23, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 25);
+            this.label1.Size = new System.Drawing.Size(120, 25);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Tìm";
+            this.label1.Text = "Tìm theo tên";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(74, 13);
+            this.txtSearch.Location = new System.Drawing.Point(149, 13);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(431, 30);
+            this.txtSearch.Size = new System.Drawing.Size(356, 30);
             this.txtSearch.TabIndex = 3;
             this.txtSearch.TextChanged += new System.EventHandler(this.TxtSearch_TextChanged);
             // 
@@ -178,11 +183,6 @@
             this.btnAddInvoice.Text = "Thêm chi tiết";
             this.btnAddInvoice.UseVisualStyleBackColor = true;
             this.btnAddInvoice.Click += new System.EventHandler(this.BtnAddInvoice_Click);
-            // 
-            // colSupplier
-            // 
-            this.colSupplier.Text = "Nhà cung cấp";
-            this.colSupplier.Width = 100;
             // 
             // C_MedicineForm
             // 

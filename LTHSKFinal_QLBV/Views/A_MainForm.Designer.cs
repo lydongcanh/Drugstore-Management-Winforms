@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.btnAnalyst = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnMedicine = new System.Windows.Forms.Button();
             this.btnSale = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.btnAnalyst = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +52,19 @@
             this.panelSideMenu.Name = "panelSideMenu";
             this.panelSideMenu.Size = new System.Drawing.Size(200, 653);
             this.panelSideMenu.TabIndex = 0;
+            // 
+            // btnAnalyst
+            // 
+            this.btnAnalyst.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAnalyst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnAnalyst.Location = new System.Drawing.Point(0, 150);
+            this.btnAnalyst.Name = "btnAnalyst";
+            this.btnAnalyst.Size = new System.Drawing.Size(200, 50);
+            this.btnAnalyst.TabIndex = 5;
+            this.btnAnalyst.Text = "Thống kê";
+            this.btnAnalyst.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAnalyst.UseVisualStyleBackColor = true;
+            this.btnAnalyst.Click += new System.EventHandler(this.BtnAnalyst_Click);
             // 
             // btnLogout
             // 
@@ -112,19 +125,6 @@
             this.panelMain.Name = "panelMain";
             this.panelMain.Size = new System.Drawing.Size(812, 653);
             this.panelMain.TabIndex = 1;
-            // 
-            // btnAnalyst
-            // 
-            this.btnAnalyst.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAnalyst.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnAnalyst.Location = new System.Drawing.Point(0, 150);
-            this.btnAnalyst.Name = "btnAnalyst";
-            this.btnAnalyst.Size = new System.Drawing.Size(200, 50);
-            this.btnAnalyst.TabIndex = 5;
-            this.btnAnalyst.Text = "Thống kê";
-            this.btnAnalyst.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAnalyst.UseVisualStyleBackColor = true;
-            this.btnAnalyst.Click += new System.EventHandler(this.BtnAnalyst_Click);
             // 
             // A_MainForm
             // 

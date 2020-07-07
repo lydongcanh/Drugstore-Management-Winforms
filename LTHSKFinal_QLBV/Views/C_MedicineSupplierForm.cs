@@ -40,6 +40,12 @@ namespace LTHSKFinal_QLBV.Views
         private void MedicineSupplierForm_Load(object sender, EventArgs e)
         {
             LoadSuppliers();
+
+            AutoCompleteStringCollection allowedTypes = new AutoCompleteStringCollection();
+            allowedTypes.AddRange(SupplierDAO.Table.Select(s => s.Name).ToArray());
+            txtSearch.AutoCompleteCustomSource = allowedTypes;
+            txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void BtnAdd_Click(object sender, EventArgs e)

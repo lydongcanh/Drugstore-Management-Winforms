@@ -49,12 +49,14 @@ namespace LTHSKFinal_QLBV.Views
                 btnAnalyst.Enabled = true;
                 btnLogout.Enabled = true;
                 OpenChildForm(new B_SaleForm(employee));
+                panelSideMenu.Visible = true;
             }));
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             OpenLoginForm();
+            panelSideMenu.Visible = false;
             btnSale.Enabled = false;
             btnMedicine.Enabled = false;
             btnEmployee.Enabled = false;

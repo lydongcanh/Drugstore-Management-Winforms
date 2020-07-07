@@ -7,7 +7,7 @@ namespace LTHSKFinal_QLBV
 {
     public partial class SellReceiptDetail : BaseEntity
     {
-        public override string EntityId => Id;
+        public override string EntityId => SellReceiptId + MedicineId;
 
         public override void Update(BaseEntity entity)
         {

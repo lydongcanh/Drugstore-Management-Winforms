@@ -66,12 +66,18 @@ namespace LTHSKFinal_QLBV.Views
             form.ShowDialog(this);
         }
 
-        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        private void B_EmployeeForm_Load(object sender, EventArgs e)
         {
             LoadEmployees();
+
+            AutoCompleteStringCollection allowedTypes = new AutoCompleteStringCollection();
+            allowedTypes.AddRange(EmployeeDAO.Table.Select(emp => emp.FullName).ToArray());
+            txtSearch.AutoCompleteCustomSource = allowedTypes;
+            txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
-        private void B_EmployeeForm_Load(object sender, EventArgs e)
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
         {
             LoadEmployees();
         }

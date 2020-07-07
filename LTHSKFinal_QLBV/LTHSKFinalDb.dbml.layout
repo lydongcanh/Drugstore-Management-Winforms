@@ -1,122 +1,122 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 11.375" name="LTHSKFinalDb">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 18.5" name="LTHSKFinalDb">
   <DataContextMoniker Name="/LTHSKFinalDbDataContext" />
   <nestedChildShapes>
-    <classShape Id="2d6a12df-45b1-463f-a27c-d14d75745574" absoluteBounds="0.75, 7.75, 2, 2.3478011067708344">
+    <classShape Id="b81699b6-5616-4d46-927c-2c451778b3e3" absoluteBounds="1.5, 13.375, 2, 2.3478011067708344">
       <DataClassMoniker Name="/LTHSKFinalDbDataContext/Employee" />
       <nestedChildShapes>
-        <elementListCompartment Id="54a67f29-5e4c-4bdd-b1ea-d96425cfc6ae" absoluteBounds="0.765, 8.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="52cdf580-99c2-431c-b554-740534b68389" absoluteBounds="1.5150000000000001, 13.835, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="af1f0881-3319-4af5-bb6e-8610f717be66" absoluteBounds="6.25, 0.75, 2, 1.5785953776041666">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/SellReceiptDetail" />
-      <nestedChildShapes>
-        <elementListCompartment Id="41b1a82a-2859-4699-b92d-c3927e74d916" absoluteBounds="6.265, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="bd9c522e-4024-4a16-884d-e5ad8e65b23f" absoluteBounds="6.25, 6.375, 2, 2.1554996744791666">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/MedicineDetail" />
-      <nestedChildShapes>
-        <elementListCompartment Id="687d5092-70a0-452b-872e-821bb19f1c88" absoluteBounds="6.265, 6.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="0c4874fd-05d3-4e4f-9545-21e2c3b6267d" absoluteBounds="3.5, 6.75, 2, 1.3862939453125005">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/Medicine" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d744b2d8-a961-45fa-aa88-31ad8469470a" absoluteBounds="3.515, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="d92921e6-b2e7-4887-b68b-a9364a71d994" absoluteBounds="3.5, 9.75, 2, 1.3862939453124987">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/MedicineSupplier" />
-      <nestedChildShapes>
-        <elementListCompartment Id="3e2f5cc5-f558-446a-bda9-48aa022f87bd" absoluteBounds="3.515, 10.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="cffe24a4-a295-40fc-b710-d3d0b1a36a70" absoluteBounds="6.25, 3.75, 2, 1.5785953776041661">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/PatientPrescriptionMedicine" />
-      <nestedChildShapes>
-        <elementListCompartment Id="ff3ceb06-86a3-4d17-aac9-380b1d740fae" absoluteBounds="6.265, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="19f936b3-9c27-4900-bf4b-8ae0aaed7619" absoluteBounds="3.5, 3.875, 2, 1.3862939453125009">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/PatientPrescription" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2727310c-9763-434a-9bda-e8fb69976f88" absoluteBounds="3.515, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="71256deb-e959-4e6a-8563-85f4f2dfd08c" absoluteBounds="0.75, 3.625, 2, 1.770896809895834">
-      <DataClassMoniker Name="/LTHSKFinalDbDataContext/Patient" />
-      <nestedChildShapes>
-        <elementListCompartment Id="5f49b50e-a8cf-4801-9b17-936a9f0d7b1c" absoluteBounds="0.765, 4.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="410de635-840d-4e72-aa81-b7b7793c4227" absoluteBounds="3.5, 0.75, 2, 1.5785953776041666">
+    <classShape Id="e84d0ccd-8a91-4b07-8826-6ee27816e9c5" absoluteBounds="0.75, 6.625, 2, 1.7708968098958318">
       <DataClassMoniker Name="/LTHSKFinalDbDataContext/SellReceipt" />
       <nestedChildShapes>
-        <elementListCompartment Id="0ea90533-32cd-4af7-bfb6-01c8698adf3a" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7128e6d6-f89a-4157-af04-3464c3dbcf4a" absoluteBounds="0.765, 7.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(5.47760602088341 : 6.75); (5.875 : 6.35260602088341); (5.875 : 1.53929768880208); (6.25 : 1.53929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Medicine/Medicine_SellReceiptDetail" />
-      <nodes>
-        <classShapeMoniker Id="0c4874fd-05d3-4e4f-9545-21e2c3b6267d" />
-        <classShapeMoniker Id="af1f0881-3319-4af5-bb6e-8610f717be66" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 7.47439947265625); (6.25 : 7.47439947265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Medicine/Medicine_MedicineDetail" />
-      <nodes>
-        <classShapeMoniker Id="0c4874fd-05d3-4e4f-9545-21e2c3b6267d" />
-        <classShapeMoniker Id="bd9c522e-4024-4a16-884d-e5ad8e65b23f" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 10.4431469726562); (7.25 : 10.4431469726562); (7.25 : 8.53049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/MedicineSupplier/MedicineSupplier_MedicineDetail" />
-      <nodes>
-        <classShapeMoniker Id="d92921e6-b2e7-4887-b68b-a9364a71d994" />
-        <classShapeMoniker Id="bd9c522e-4024-4a16-884d-e5ad8e65b23f" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 6.80438437785457); (6.03125 : 6.27313437785457); (6.03125 : 4.53929768880208); (6.25 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Medicine/Medicine_PatientPrescriptionMedicine" />
-      <nodes>
-        <classShapeMoniker Id="0c4874fd-05d3-4e4f-9545-21e2c3b6267d" />
-        <classShapeMoniker Id="cffe24a4-a295-40fc-b710-d3d0b1a36a70" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.96279581705729); (5.79166666666667 : 4.96279581705729 : JumpStart); (6.11458333333333 : 4.96279581705729 : JumpEnd); (6.25 : 4.96279581705729)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/PatientPrescription/PatientPrescription_PatientPrescriptionMedicine" />
-      <nodes>
-        <classShapeMoniker Id="19f936b3-9c27-4900-bf4b-8ae0aaed7619" />
-        <classShapeMoniker Id="cffe24a4-a295-40fc-b710-d3d0b1a36a70" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 4.56814697265625); (3.04166666666667 : 4.56814697265625 : JumpStart); (3.20833333333333 : 4.56814697265625 : JumpEnd); (3.5 : 4.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Patient/Patient_PatientPrescription" />
-      <nodes>
-        <classShapeMoniker Id="71256deb-e959-4e6a-8563-85f4f2dfd08c" />
-        <classShapeMoniker Id="19f936b3-9c27-4900-bf4b-8ae0aaed7619" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 1.08214884440104); (6.25 : 1.08214884440104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/LTHSKFinalDbDataContext/SellReceipt/SellReceipt_SellReceiptDetail" />
-      <nodes>
-        <classShapeMoniker Id="410de635-840d-4e72-aa81-b7b7793c4227" />
-        <classShapeMoniker Id="af1f0881-3319-4af5-bb6e-8610f717be66" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 7.75153746153846); (3.125 : 7.37653746153846); (3.125 : 1.53929768880208); (3.5 : 1.53929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+    <classShape Id="6f4a5168-9a7c-4d0a-a7de-20131ac04ec4" absoluteBounds="3.5, 6.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/MedicineDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e5dc2b08-ed1c-44e9-ac2f-d251cfd80398" absoluteBounds="3.515, 6.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="918f2c22-c4ef-48f8-9777-3ad3b4a516eb" absoluteBounds="0.75, 3.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/Medicine" />
+      <nestedChildShapes>
+        <elementListCompartment Id="33a947b3-69cb-4834-8aff-885119152ee5" absoluteBounds="0.765, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="27e062ad-78ad-46c8-b7f9-1a7f472fee8e" absoluteBounds="0.75, 16.875, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/MedicineSupplier" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2db154d-f89f-47fc-a172-4311c5cadcc4" absoluteBounds="0.765, 17.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fa0204c9-07d6-4bbc-bfd5-c8c05b6b7d51" absoluteBounds="3.5, 0.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/PatientPrescriptionMedicine" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d59ecb05-73d4-41f5-bc5a-e9a49e95ed00" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9d83555a-4fa5-45b7-ad00-40e525fc331f" absoluteBounds="0.75, 0.875, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/PatientPrescription" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b947686-e19f-48ef-92b2-0e21b923ec2d" absoluteBounds="0.765, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3feb76e-1bfc-4a40-9f42-7bcb5c9c53ca" absoluteBounds="1.5, 10.125, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/Patient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8996e9cf-38cb-49b8-99fb-4ea29d77d7f8" absoluteBounds="1.5150000000000001, 10.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="536eb97b-7005-45d8-aa8a-2d084444fc67" absoluteBounds="3.5, 3.875, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/LTHSKFinalDbDataContext/SellReceiptDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4767912a-4025-49ed-94d3-19336acbe19f" absoluteBounds="3.515, 4.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 14.5489005533854); (1.1249995 : 14.5489005533854); (1.1249995 : 8.39589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/LTHSKFinalDbDataContext/Employee/Employee_SellReceipt" />
       <nodes>
-        <classShapeMoniker Id="2d6a12df-45b1-463f-a27c-d14d75745574" />
-        <classShapeMoniker Id="410de635-840d-4e72-aa81-b7b7793c4227" />
+        <classShapeMoniker Id="b81699b6-5616-4d46-927c-2c451778b3e3" />
+        <classShapeMoniker Id="e84d0ccd-8a91-4b07-8826-6ee27816e9c5" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 3.625); (1.75 : 1.96519903320312); (3.04166666666667 : 1.96519903320312 : JumpStart); (3.20833333333333 : 1.96519903320312 : JumpEnd); (3.5 : 1.96519903320312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.2612939453125); (3.125 : 5.6362939453125); (3.125 : 7.57774983723958); (3.19791666666667 : 7.57774983723958 : JumpStart); (3.36458333333333 : 7.57774983723958 : JumpEnd); (3.5 : 7.57774983723958)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Medicine/Medicine_MedicineDetail" />
+      <nodes>
+        <classShapeMoniker Id="918f2c22-c4ef-48f8-9777-3ad3b4a516eb" />
+        <classShapeMoniker Id="6f4a5168-9a7c-4d0a-a7de-20131ac04ec4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 17.5681469726563); (4.53125 : 17.5681469726563); (4.53125 : 8.65549967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/MedicineSupplier/MedicineSupplier_MedicineDetail" />
+      <nodes>
+        <classShapeMoniker Id="27e062ad-78ad-46c8-b7f9-1a7f472fee8e" />
+        <classShapeMoniker Id="6f4a5168-9a7c-4d0a-a7de-20131ac04ec4" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.875); (3.125 : 3.5); (3.125 : 1.53929768880208); (3.19791666666667 : 1.53929768880208 : JumpStart); (3.36458333333333 : 1.53929768880208 : JumpEnd); (3.5 : 1.53929768880208)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Medicine/Medicine_PatientPrescriptionMedicine" />
+      <nodes>
+        <classShapeMoniker Id="918f2c22-c4ef-48f8-9777-3ad3b4a516eb" />
+        <classShapeMoniker Id="fa0204c9-07d6-4bbc-bfd5-c8c05b6b7d51" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.96279581705729); (3.04166666666667 : 1.96279581705729 : JumpStart); (3.36458333333333 : 1.96279581705729 : JumpEnd); (3.5 : 1.96279581705729)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/PatientPrescription/PatientPrescription_PatientPrescriptionMedicine" />
+      <nodes>
+        <classShapeMoniker Id="9d83555a-4fa5-45b7-ad00-40e525fc331f" />
+        <classShapeMoniker Id="fa0204c9-07d6-4bbc-bfd5-c8c05b6b7d51" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.125 : 10.125); (2.125 : 8.39589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/LTHSKFinalDbDataContext/Patient/Patient_SellReceipt" />
       <nodes>
-        <classShapeMoniker Id="71256deb-e959-4e6a-8563-85f4f2dfd08c" />
-        <classShapeMoniker Id="410de635-840d-4e72-aa81-b7b7793c4227" />
+        <classShapeMoniker Id="b3feb76e-1bfc-4a40-9f42-7bcb5c9c53ca" />
+        <classShapeMoniker Id="e84d0ccd-8a91-4b07-8826-6ee27816e9c5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.28125 : 10.125); (3.28125 : 1.17589634440104); (2.75 : 1.17589634440104)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Patient/Patient_PatientPrescription" />
+      <nodes>
+        <classShapeMoniker Id="b3feb76e-1bfc-4a40-9f42-7bcb5c9c53ca" />
+        <classShapeMoniker Id="9d83555a-4fa5-45b7-ad00-40e525fc331f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.56814697265625); (3.19791666666667 : 4.56814697265625 : JumpStart); (3.36458333333333 : 4.56814697265625 : JumpEnd); (3.5 : 4.56814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/Medicine/Medicine_SellReceiptDetail" />
+      <nodes>
+        <classShapeMoniker Id="918f2c22-c4ef-48f8-9777-3ad3b4a516eb" />
+        <classShapeMoniker Id="536eb97b-7005-45d8-aa8a-2d084444fc67" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 6.6862992741887); (3.06607443490112 : 6.37022483928758 : JumpStart); (3.18392556509888 : 6.25237370908982 : JumpEnd); (3.1875 : 6.2487992741887); (3.1875 : 4.94597245898438); (3.19791666666667 : 4.94597245898437 : JumpStart); (3.36458333333333 : 4.94597245898438 : JumpEnd); (3.5 : 4.94597245898438)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/LTHSKFinalDbDataContext/SellReceipt/SellReceipt_SellReceiptDetail" />
+      <nodes>
+        <classShapeMoniker Id="e84d0ccd-8a91-4b07-8826-6ee27816e9c5" />
+        <classShapeMoniker Id="536eb97b-7005-45d8-aa8a-2d084444fc67" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

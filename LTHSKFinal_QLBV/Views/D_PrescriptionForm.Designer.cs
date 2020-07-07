@@ -35,7 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbMedicine = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.detailGroup = new System.Windows.Forms.GroupBox();
             this.rtxtDescription = new System.Windows.Forms.RichTextBox();
             this.numQuantity = new System.Windows.Forms.NumericUpDown();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -48,10 +48,12 @@
             this.colODQ = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnOk = new System.Windows.Forms.Button();
+            this.lthskFinalDbDataSet1 = new LTHSKFinal_QLBV.LTHSKFinalDbDataSet();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.detailGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lthskFinalDbDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -117,22 +119,22 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Thuốc";
             // 
-            // groupBox2
+            // detailGroup
             // 
-            this.groupBox2.Controls.Add(this.cbMedicine);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.rtxtDescription);
-            this.groupBox2.Controls.Add(this.numQuantity);
-            this.groupBox2.Controls.Add(this.btnAdd);
-            this.groupBox2.Controls.Add(this.btnDelete);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(13, 117);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(336, 324);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Chi tiết đơn thuốc";
+            this.detailGroup.Controls.Add(this.cbMedicine);
+            this.detailGroup.Controls.Add(this.label5);
+            this.detailGroup.Controls.Add(this.rtxtDescription);
+            this.detailGroup.Controls.Add(this.numQuantity);
+            this.detailGroup.Controls.Add(this.btnAdd);
+            this.detailGroup.Controls.Add(this.btnDelete);
+            this.detailGroup.Controls.Add(this.label4);
+            this.detailGroup.Controls.Add(this.label3);
+            this.detailGroup.Location = new System.Drawing.Point(13, 117);
+            this.detailGroup.Name = "detailGroup";
+            this.detailGroup.Size = new System.Drawing.Size(336, 324);
+            this.detailGroup.TabIndex = 1;
+            this.detailGroup.TabStop = false;
+            this.detailGroup.Text = "Chi tiết đơn thuốc";
             // 
             // rtxtDescription
             // 
@@ -241,14 +243,19 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.BtnOk_Click);
             // 
+            // lthskFinalDbDataSet1
+            // 
+            this.lthskFinalDbDataSet1.DataSetName = "LTHSKFinalDbDataSet";
+            this.lthskFinalDbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // D_PrescriptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(732, 502);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.detailGroup);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -260,10 +267,11 @@
             this.Load += new System.EventHandler(this.D_PrescriptionForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.detailGroup.ResumeLayout(false);
+            this.detailGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lthskFinalDbDataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -275,7 +283,7 @@
         private System.Windows.Forms.TextBox txtPrescriptionId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox detailGroup;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ListView lstDetails;
         private System.Windows.Forms.RichTextBox rtxtDescription;
@@ -290,5 +298,6 @@
         private System.Windows.Forms.ComboBox cbMedicine;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnOk;
+        private LTHSKFinalDbDataSet lthskFinalDbDataSet1;
     }
 }

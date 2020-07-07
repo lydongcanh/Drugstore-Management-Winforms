@@ -14,8 +14,11 @@ namespace LTHSKFinal_QLBV.Views
     public partial class B_SaleForm : Form
     {
         private readonly BaseDAO<Patient> PatientDAO = new BaseDAO<Patient>();
+        private readonly BaseDAO<PatientPrescription> PrescriptionDAO = new BaseDAO<PatientPrescription>();
         private readonly Employee Employee;
+
         private List<Patient> patients = new List<Patient>();
+        private List<PatientPrescription> prescriptions = new List<PatientPrescription>();
 
         public B_SaleForm(Employee employee)
         {
@@ -42,26 +45,54 @@ namespace LTHSKFinal_QLBV.Views
             }
         }
 
+        private void LoadPrescription()
+        {
+            lstPrescription.Items.Clear();
+            var patient = patients[lstPatients.SelectedIndices[0]];
+            prescriptions = PrescriptionDAO.Select(p => p.PatientId == patient.EntityId);
+            foreach (var prescription in prescriptions)
+            {
+                lstPrescription.Items.Add(prescription.DiseaseName);
+            }
+        }
+
         private void SaleForm_Load(object sender, EventArgs e)
         {
             LoadPatients();
             btnAddPrescription.Enabled = false;
-            btnPrescriptions.Enabled = false;
             btnSaleReceipt.Enabled = false;
+            btnSaleWithPrescription.Enabled = false;
+
+            AutoCompleteStringCollection allowedTypes = new AutoCompleteStringCollection();
+            allowedTypes.AddRange(PatientDAO.Table.Select(p => p.FullName).ToArray());
+            txtSearch.AutoCompleteCustomSource = allowedTypes;
+            txtSearch.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
 
         private void LstPatients_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstPatients.SelectedIndices.Count < 1)
             {
-                btnPrescriptions.Enabled = false;
                 btnSaleReceipt.Enabled = false;
+                btnSaleWithPrescription.Enabled = false;
                 return;
             }
 
             btnAddPrescription.Enabled = true;
-            btnPrescriptions.Enabled = true;
-            btnSaleReceipt.Enabled = true;            
+            btnSaleReceipt.Enabled = true;
+            LoadPrescription();
+        }
+
+        private void LstPrescription_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstPrescription.SelectedIndices.Count < 1)
+            {
+                btnSaleWithPrescription.Enabled = false;
+                return;
+            }
+
+            btnSaleWithPrescription.Enabled = true;
         }
 
         private void TxtSearch_TextChanged(object sender, EventArgs e)
@@ -83,18 +114,32 @@ namespace LTHSKFinal_QLBV.Views
         private void BtnAddPrescription_Click(object sender, EventArgs e)
         {
             var patient = patients[lstPatients.SelectedIndices[0]];
-            var form = new D_PrescriptionForm(Employee, patient);
+            var form = new D_PrescriptionForm(Employee, patient, p =>
+            {
+                LoadPrescription();
+            });
             form.ShowDialog(this);
         }
 
-        private void BtnPrescriptions_Click(object sender, EventArgs e)
+        private void BtnSaleReceipt_Click(object sender, EventArgs e)
         {
+            var patient = patients[lstPatients.SelectedIndices[0]];
+            var form = new D_SellRecriptForm(patient);
+            form.ShowDialog(this);
+        }
 
+        private void BtnSaleWithPrescription_Click(object sender, EventArgs e)
+        {
+            var patient = patients[lstPatients.SelectedIndices[0]];
+            var prescription = prescriptions[lstPrescription.SelectedIndex];
+            var form = new D_SaleWithPrescriptionForm(Employee, patient, prescription, sr => { });
+            form.ShowDialog(this);
         }
 
         private void BtnDirectSale_Click(object sender, EventArgs e)
         {
-
+            var form = new D_DirectSaleForm(Employee, p => { });
+            form.ShowDialog(this);
         }
 
         private void LstPatients_DoubleClick(object sender, EventArgs e)
@@ -110,6 +155,17 @@ namespace LTHSKFinal_QLBV.Views
                 LoadPatients();
             }, patient);
             patientForm.ShowDialog(this);
+        }
+
+        private void LstPrescription_DoubleClick(object sender, EventArgs e)
+        {
+            var patient = patients[lstPatients.SelectedIndices[0]];
+            var prescription = prescriptions[lstPrescription.SelectedIndex];
+            var form = new D_PrescriptionForm(Employee, patient, p =>
+            {
+                LoadPrescription();
+            }, prescription);
+            form.ShowDialog(this);
         }
     }
 }
